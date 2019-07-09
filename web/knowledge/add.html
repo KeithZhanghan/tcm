@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssmoban</title>
+    <!-- Bootstrap Styles-->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+
+    <!-- Custom Styles-->
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- TABLE STYLES-->
+    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <script src="../layui/layui.js" charset="utf-8"></script>
+    <style>
+        .underline{
+            border-bottom: 1px solid rgba(107, 108, 109, 0.19);
+            background-color: rgb(50, 50, 50);
+            color: rgb(50, 50, 50);
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><strong>后台管理系统</strong></a>
+
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-user fa-fw"></i> <span id="username"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li class="divider"></li>
+                    <li><a href="../logOut"><i class="fa fa-sign-out fa-fw"></i>注销</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation" style="z-index: 0">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a href="../knowledge/admin.html"><i class="fa fa-dashboard"></i>主页</a>
+                </li>
+                <li>
+                    <a href="../folk/admin"><i class="fa fa-bar-chart-o"></i> 民间医药数据库</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-qrcode"></i>传统知识数据库<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="../searchTcm"  class="underline" id="search">查询中医药知识</a>
+                        </li>
+                        <li>
+                            <a href="../addTcm" class="underline" id="add">添加中医药知识</a>
+                        </li>
+                    </ul>
+                </li>
+                <li >
+                    <a href="../user/userManage"><i class="fa fa-bar-chart-o"></i> 用户管理</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <div id="page-wrapper">
+        <div id="page-inner" style="margin-top: 0;">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <blockquote class="layui-elem-quote layui-text">
+                               <!--1.<a href="/doc/base/faq.html#form" target="_blank"></a> 2. <a href="/doc/modules/form.html#render" target="_blank"></a>-->
+                                请注意核对信息
+                            </blockquote>
+                            <form class="layui-form">
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend style="font-weight: bolder">基本信息</legend>
+                            </fieldset>
+
+                            <div class="layui-form-pane">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">知识名称</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" id="projectName" name="projectName" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">应用地区</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="area" id="area" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">持有人种类</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="userType" value="个人" title="个人"  lay-filter="radio1" checked="">
+                                        <input type="radio" name="userType" value="群体" title="群体"  lay-filter="radio2">
+                                        <input type="radio" name="userType" value="单位" title="单位"  lay-filter="radio3">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item" id="person">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">持有人/单位</label>
+                                        <div class="layui-input-inline">
+                                            <input name="holderName" lay-verify="required" placeholder="姓名" id="holderName1" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="date"  lay-verify="required|date" placeholder="yyyy-MM-dd" autocomplete="off" id="birth" class="layui-input">
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <input   placeholder="民族" name="nation" lay-verify="required" autocomplete="off" id="nation" class="layui-input">
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <select  id="sex">
+                                                <option value="" disabled="disabled">请选择性别</option>
+                                                <option value="男">男</option>
+                                                <option value="女">女</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item" id="target1">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">邮政编码</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="postalCode" id="postalCode" lay-verify="number" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">电子邮箱</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" id="email" name="email" lay-verify="email|required" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">联系电话</label>
+                                        <div class="layui-input-inline">
+                                            <input id="tel" autocomplete="off" name="tel" lay-verify="required|phone" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">联系地址</label>
+                                        <div class="layui-input-inline">
+                                            <input type="tel" name="postAddress" id="postAddress" lay-verify="required" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-form-text" id="target2">
+                                    <label class="layui-form-label">持有人简介</label>
+                                    <div class="layui-input-block" id="text1">
+                                        <textarea placeholder="从业经历、技术专长等" name="holderIntroduction1" lay-verify="required" class="layui-textarea" id="holderIntroduction1"></textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend style="font-weight: bolder">传承情况</legend>
+                            </fieldset>
+
+                            <div class="layui-form layui-form-pane">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label" style="overflow: visible">传承时间(年)</label>
+                                        <div class="layui-input-inline">
+                                            <input id="time" name="time" autocomplete="off" lay-verify="required" placeholder="仅限数字" class="layui-input">
+                                        </div>
+
+                                        <label class="layui-form-label">传承代数</label>
+                                        <div class="layui-input-inline">
+                                            <input id="times" name="times" autocomplete="off" lay-verify="number" placeholder="仅限数字" class="layui-input">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">传承情况</label>
+                                    <div class="layui-input-block">
+                                        <textarea lay-verify="required" placeholder="项目来源、传承历史、传承谱系图等"  id="inheritCondition" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend style="font-weight: bolder">主要内容</legend>
+                            </fieldset>
+
+                            <div class="layui-form layui-form-pane">
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">类别</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="technologyType" value="传统诊疗技术" title="传统诊疗技术" checked="" lay-filter="radio4">
+                                        <input type="radio" name="technologyType" value="中药炮制技术" title="中药炮制技术" lay-filter="radio5">
+                                        <input type="radio" name="technologyType" value="养生方法" title="养生方法" lay-filter="radio6">
+                                        <input type="radio" name="technologyType" value="单验方" title="单验方" lay-filter="radio7">
+                                        <input type="radio" name="technologyType" value="传统制剂方法" title="传统制剂方法" lay-filter="radio8">
+                                        <input type="radio" name="technologyType" value="其他" title="其他" lay-filter="radio9">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">内容简介</label>
+                                    <div class="layui-input-block">
+                                        <textarea placeholder="" lay-verify="required" class="layui-textarea" id="contentDescription"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend style="font-weight: bolder">价值论证</legend>
+                            </fieldset>
+
+                            <div class="layui-form layui-form-pane">
+
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">主要特征</label>
+                                    <div class="layui-input-block">
+                                        <textarea placeholder="" lay-verify="required" class="layui-textarea" id="mainCharacter"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">重要价值</label>
+                                    <div class="layui-input-block">
+                                        <textarea placeholder="" class="layui-textarea" lay-verify="required" id="important"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                                <fieldset class="layui-elem-field layui-field-title">
+                                    <legend style="font-weight: bolder">附件</legend>
+                                </fieldset>
+
+                                <div class="layui-form layui-form-pane">
+                                    <div class="layui-form-item">
+                                        <script type="text/plain" id="myEditor" name="myEditor">
+
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" id="submit" lay-submit="" lay-filter="submit">立即提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <input id="temp" />
+</div>
+
+</body>
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="../assets/js/jquery.metisMenu.js"></script>
+<!-- DATA TABLE SCRIPTS -->
+<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+<!-- Custom Js -->
+<script src="../assets/js/custom-scripts.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="../assets/ueditor-1.4.3.3/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="../assets/ueditor-1.4.3.3/_examples/editor_api.js"></script>
+<script>
+    var holderIntroduction = ''
+    var type = 1 //判断是个人还是集体
+    var medicType = '传统诊疗技术'
+    var ue = UE.getEditor('myEditor');
+    var canISend = true;
+    layui.use(['table', 'layedit', 'form', 'upload', 'laydate'], function(){
+        var table = layui.table;
+        var edit = layui.layedit;
+        var form = layui.form;
+        var laydate = layui.laydate;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange=function () {
+            if (xhr.readyState!=4||xhr.status!=200){
+                return;
+            }
+            else
+            $("#username").text(xhr.responseText)
+        }
+        xhr.open('GET', '../name');
+        xhr.send();
+        var people1=$('<div class="layui-form-item" id="people">' +
+            '    <div class="layui-inline">' +
+            '        <label class="layui-form-label">持有人</label>' +
+            '        <div class="layui-input-inline">' +
+            '            <input type="tel" name="phone" id="holderName2" lay-verify="required" value=" " placeholder="持有者名称"  autocomplete="off" class="layui-input">' +
+            '        </div>' +
+            '    </div>' +
+            '</div>');
+        var person1=$('#person');
+        var people2=$('<div class="layui-input-block" id="text2">' +
+            '    <textarea placeholder="群体类型、代表人物等" lay-verify="required" class="layui-textarea" id="holderIntroduction2" name="holderIntroduction2"></textarea>' +
+            '</div>');
+        var person2=$('#text1');
+        laydate.render({
+            elem: '#birth'
+        })
+        form.on('radio(radio1)', function (obj) {
+            type = 1;
+            people1.detach()
+            people2.detach()
+            $('#target1').before(person1)
+            $('#target2').append(person2)
+        });
+        form.on('radio(radio2)', function (obj) {
+            type = 2
+            person1.detach()
+            person2.detach()
+            $('#target1').before(people1)
+            $('#target2').append(people2)
+        });
+        form.on('radio(radio3)', function (obj) {
+            type = 3
+            person1=person1.detach()
+            person2=person2.detach()
+            $('#target1').before(people1)
+            $('#target2').append(people2)
+        });
+
+        form.on('radio(radio4)', function (obj) {
+            medicType = obj.value
+        });
+        form.on('radio(radio5)', function (obj) {
+            medicType = obj.value
+        });
+        form.on('radio(radio6)', function (obj) {
+            medicType = obj.value
+        });
+        form.on('radio(radio7)', function (obj) {
+            medicType = obj.value
+        });
+        form.on('radio(radio8)', function (obj) {
+            medicType = obj.value
+        });
+        form.on('radio(radio9)', function (obj) {
+            medicType = obj.value
+        });
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        form.on('submit(submit)', function (data) {
+
+            if (type === 1){
+                holderIntroduction = $('#holderIntroduction1').val()
+            }
+            else
+            { holderIntroduction = $('#holderIntroduction2').val()}
+            if (canISend){
+
+                $.ajax({
+                    url: '/insertRecord'
+                    ,type:"POST"
+                    ,data:{
+                        holderName: function(){if (type == 1) return $('#holderName1').val();return $('#holderName2').val()},
+                        sex : function(){return $('#sex option:checked').val()},
+                        postaddress: function(){return $('#postAddress').val()},
+                        phone: function(){return $('#tel').val()},
+                        holderType: function() {var arr=['个人','群体','单位']; return arr[type-1];},
+                        email: function(){return $('#email').val()},
+                        postalCode: function(){return $('#postalCode').val()},
+                        projectName: function(){return $('#projectName').val()},
+                        birth: function(){return $('#birth').val()},
+                        nationality: function(){return $('#nation').val()},
+                        area: function(){return $('#area').val()},
+                        inheritTime: function(){return $('#time').val()},
+                        inheritTimes: function(){return $('#times').val()},
+                        medicType: function(){return medicType},
+                        holderIntroduction: function(){return holderIntroduction},
+                        inheritCondition: function(){return $('#inheritCondition').val()},
+                        contentDescription: function(){return $('#contentDescription').val()},
+                        mainCharacter: function(){return $('#mainCharacter').val()},
+                        importantCharacter: function(){return $('#important').val()},
+                        document: ue.getContent()
+                    },
+                    success: function (res) {
+                        if (res.code == 1) {
+                            layer.msg("添加成功");
+                            setTimeout(function () {
+                                window.location.reload()
+                                canISend = true;
+                            },1500)
+                        }
+                    }
+                })
+            }
+            canISend=false;
+            return false;
+        })
+
+
+    });
+</script>
+
+</html>
+

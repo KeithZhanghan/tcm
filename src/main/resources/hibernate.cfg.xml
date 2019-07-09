@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/graduation</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <mapping class="jz.entity.Disease"/>
+        <mapping resource="jz/entity/Disease.hbm.xml"/>
+        <mapping class="jz.entity.DiseaseType"/>
+        <mapping resource="jz/entity/DiseaseType.hbm.xml"/>
+        <mapping class="jz.entity.Medicine"/>
+        <mapping resource="jz/entity/Medicine.hbm.xml"/>
+        <mapping resource="jz/entity/MedicineType.hbm.xml"/>
+        <mapping class="jz.entity.MedicineType"/>
+        <mapping class="jz.entity.Symptom"/>
+        <mapping resource="jz/entity/Symptom.hbm.xml"/>
+        <mapping resource="jz/entity/Technology.hbm.xml"/>
+        <mapping class="jz.entity.Technology"/>
+        <mapping resource="jz/entity/TechnologyType.hbm.xml"/>
+        <mapping class="jz.entity.TechnologyType"/>
+        <mapping resource="jz/entity/User.hbm.xml"/>
+        <mapping class="jz.entity.User"/>
+        <mapping resource="jz/entity/Prescription.hbm.xml"/>
+        <mapping class="jz.entity.Prescription"/>
+    </session-factory>
+</hibernate-configuration>

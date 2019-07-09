@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssmoban</title>
+    <!-- Bootstrap Styles-->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+
+    <!-- Custom Styles-->
+    <link href="../assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- TABLE STYLES-->
+    <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <script src="../layui/layui.js" charset="utf-8"></script>
+    <style>
+        .underline{
+            border-bottom: 1px solid rgba(107, 108, 109, 0.19);
+            background-color: rgb(50, 50, 50);
+            color: rgb(50, 50, 50);
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation" style="z-index: 80000">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><strong>后台管理系统</strong></a>
+
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li class="divider"></li>
+                        <li><a href="../logOut"><i class="fa fa-sign-out fa-fw"></i>注销</a>
+                        </li>
+                    </ul>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+        </ul>
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation" style="z-index: 0">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+
+                <li>
+                    <a href="../knowledge/admin.html#"><i class="fa fa-dashboard"></i>主页</a>
+                </li>
+                <!--<li>-->
+                <!--<a href="#" onclick="return false;"><i class="fa fa-desktop"></i> 民间医药数据库<span class="fa arrow"></span></a>-->
+                <!--<ul class="nav nav-second-level">-->
+                <!--<li>-->
+                <!--<a href="../folk/admin">查询</a>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <li>
+                    <a href="../folk/admin"><i class="fa fa-bar-chart-o"></i> 民间医药数据库</a>
+                </li>
+                <li id="collapse">
+                    <a href="#"><i class="fa fa-qrcode"></i>传统知识数据库<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#"  class="underline" id="search">查询中医药知识</a>
+                        </li>
+                        <li>
+                            <a href="./add.html" class="underline" id="add">添加中医药知识</a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper" >
+
+        <h1 style="padding-top: 20px;padding-left: 0">
+            <div class="layui-form input-group">
+                <div class="layui-form-item">
+                    <div class="layui-input-block" style="margin-left: 60px;">
+                        <span style="font-size: 16px">搜索项目</span>
+                        <input type="radio" name="sex"  value="1" title="持有人姓名" checked="checked" lay-filter="byKeeper">
+                        <input type="radio" name="sex"  value="0" title="验方名称" lay-filter="byMedic">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block" style="margin-left: 60px;">
+                        <div class="input-group">
+                            <input type="text" class="form-control"/>
+                            <span class="input-group-addon" id='formSearch' style="width: 100px;"><a href="#"><i class="glyphicon glyphicon-search"><span>搜索</span></i></a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h1>
+
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../assets/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="../assets/js/jquery.metisMenu.js"></script>
+<!-- DATA TABLE SCRIPTS -->
+<script src="../assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="../assets/js/dataTables/dataTables.bootstrap.js"></script>
+<!-- Custom Js -->
+<script src="../assets/js/custom-scripts.js"></script>
+<script>
+    console.log(location.search)
+    var reg=/\?id=([\s\S]*)/;
+    reg.exec(location.search)[1];
+
+
+</script>
+</html>
+

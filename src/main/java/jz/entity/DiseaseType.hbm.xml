@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="jz.entity.DiseaseType" table="disease_type" schema="graduation">
+        <id name="diseaseTypeId">
+            <column name="disease_type_id" sql-type="varchar(255)"/>
+        </id>
+        <property name="diseaseClassify">
+            <column name="disease_classify" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="diseaseTypeName">
+            <column name="disease_type_name" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="isValid">
+            <column name="is_valid" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

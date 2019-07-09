@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="jz.entity.Symptom" table="symptom" schema="graduation">
+        <id name="symptomId">
+            <column name="symptom_id" sql-type="varchar(255)"/>
+        </id>
+        <property name="symptomName">
+            <column name="symptom_name" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="symptomTecId">
+            <column name="symptom_tec_id" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="symptomPreId">
+            <column name="symptom_pre_id" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="symptomMedId">
+            <column name="symptom_med_id" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="isValid">
+            <column name="is_valid" sql-type="int(11)" not-null="true"/>
+        </property>
+
+    </class>
+</hibernate-mapping>

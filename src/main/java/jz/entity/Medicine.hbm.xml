@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="jz.entity.Medicine" table="medicine" schema="graduation">
+        <id name="medicineId">
+            <column name="medicine_id" sql-type="varchar(255)"/>
+        </id>
+        <property name="medicineTypeId">
+            <column name="medicine_type_id" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="medicineName">
+            <column name="medicine_name" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="medicineDescribe">
+            <column name="medicine_describe" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="medicineEfficacy">
+            <column name="medicine_efficacy" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="medicineImage" insert="false" update="false">
+            <column name="medicine_image" sql-type="varchar(255)" not-null="true" />
+        </property>
+        <property name="isValid">
+            <column name="is_valid" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

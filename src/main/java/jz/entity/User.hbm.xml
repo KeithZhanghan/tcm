@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="jz.entity.User" table="user" schema="graduation">
+        <id name="userAccount">
+            <column name="user_account" sql-type="varchar(11)" length="11"/>
+        </id>
+        <property name="userAge">
+            <column name="user_age" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="password">
+            <column name="password" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="userRank">
+            <column name="user_rank" sql-type="int(255)" not-null="true"/>
+        </property>
+        <property name="userName">
+            <column name="user_name" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="isValid">
+            <column name="is_valid" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="userGender">
+            <column name="user_gender" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

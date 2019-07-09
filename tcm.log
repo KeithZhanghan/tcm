@@ -1,0 +1,36 @@
+
+2019-03-28 15:33:53
+[WARN]-[Thread: main]-[org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure()]: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+
+2019-03-28 15:33:55
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select user0_.user_account as user_acc1_7_, user0_.user_age as user_age2_7_, user0_.password 
+as password3_7_, user0_.user_rank as user_ran4_7_, user0_.user_name as user_nam5_7_, user0_.is_valid 
+as is_valid6_7_, user0_.user_gender as user_gen7_7_ from graduation.user user0_ 
+ {executed in 2 msec}
+
+2019-03-28 15:36:10
+[WARN]-[Thread: main]-[org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure()]: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+
+2019-03-28 15:36:12
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select user0_.user_account as user_acc1_7_, user0_.user_age as user_age2_7_, user0_.password 
+as password3_7_, user0_.user_rank as user_ran4_7_, user0_.user_name as user_nam5_7_, user0_.is_valid 
+as is_valid6_7_, user0_.user_gender as user_gen7_7_ from graduation.user user0_ 
+ {executed in 2 msec}
+
+2019-03-28 16:31:36
+[WARN]-[Thread: main]-[org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure()]: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+
+2019-03-28 16:31:38
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select user0_.user_account as user_acc1_7_, user0_.user_age as user_age2_7_, user0_.password 
+as password3_7_, user0_.user_rank as user_ran4_7_, user0_.user_name as user_nam5_7_, user0_.is_valid 
+as is_valid6_7_, user0_.user_gender as user_gen7_7_ from graduation.user user0_ 
+ {executed in 7 msec}
+
+2019-03-28 17:55:33
+[WARN]-[Thread: main]-[org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure()]: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+
+2019-03-28 17:55:34
+[INFO]-[Thread: main]-[net.sf.log4jdbc.Slf4jSpyLogDelegator.sqlTimingOccured()]: select user0_.user_account as user_acc1_7_, user0_.user_age as user_age2_7_, user0_.password 
+as password3_7_, user0_.user_rank as user_ran4_7_, user0_.user_name as user_nam5_7_, user0_.is_valid 
+as is_valid6_7_, user0_.user_gender as user_gen7_7_ from graduation.user user0_ 
+ {executed in 5 msec}
